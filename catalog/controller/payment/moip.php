@@ -117,12 +117,6 @@ class ControllerPaymentMoip extends Controller {
 		
 		$this->data['continue'] = HTTPS_SERVER . 'checkout/success';
 		
-		if ($this->request->get['route'] != 'checkout/guest_step_3') {
-			$this->data['back'] = HTTPS_SERVER . 'checkout/payment';
-		} else {
-			$this->data['back'] = HTTPS_SERVER . 'checkout/guest_step_2';
-		}
-		
 		$this->id = 'payment';
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/moip.tpl')) {
