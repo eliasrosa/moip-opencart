@@ -6,7 +6,7 @@ Módulo desenvolvido pelo Manoel Vidal e disponibilizado publicamente pela prime
 Compatibilidade
 ---------------
 
-OpenCart 1.4.8b, 1.4.9, 1.4.9.1, 1.4.9.2, 1.4.9.3
+OpenCart 1.5.x
 
 
 Instalação
