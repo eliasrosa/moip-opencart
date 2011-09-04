@@ -15,8 +15,8 @@ class ControllerPaymentMoip extends Controller {
 		$this->data['nometranzacao'] = $this->config->get('moip_encryption');
 		$this->data['business'] = $this->config->get('moip_email');
 		$this->data['item_name'] = $this->config->get('config_store');				
-		$this->data['currency_code'] = $order_info['currency'];
-		$this->data['amount'] = $this->currency->format($order_info['total'], $order_info['currency'], $order_info['value'], FALSE);
+		$this->data['currency_code'] = $order_info['currency_code'];
+		$this->data['amount'] = $this->currency->format($order_info['total'], $order_info['currency_code'], FALSE);
 		$this->data['first_name'] = htmlentities($order_info['payment_firstname'], ENT_COMPAT, 'UTF-8');
 		$this->data['last_name'] = htmlentities($order_info['payment_lastname'], ENT_COMPAT, 'UTF-8');
 		$this->data['address1'] = htmlentities($order_info['payment_address_1'], ENT_COMPAT, 'UTF-8');
@@ -89,7 +89,7 @@ class ControllerPaymentMoip extends Controller {
 				'quantidade'  => $product['quantity'],
 				'option'      => $option_data,
 				'id'          => $product['product_id'],	
-				'peso'        => $this->weight->convert($product['weight'], $product['weight_class'], $this->config->get('config_weight_class')),
+				'peso'        => $this->weight->convert($product['weight'], $product['weight_class_id'], $this->config->get('config_weight_class')),
 				//'discontos' => ($product['discount'] ? $this->currency->format($product['price'] - $product['discount']) : NULL)
       		); 
     	} 

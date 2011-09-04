@@ -21,7 +21,7 @@ class ModelPaymentMoip extends Model {
 	
 		if ($status) {  
       		$method_data = array( 
-        		'id'         => 'moip',
+        		'code'         => 'moip',
         		'title'      => $this->language->get('text_title'),
 				'sort_order' => $this->config->get('moip_sort_order')
       		);
