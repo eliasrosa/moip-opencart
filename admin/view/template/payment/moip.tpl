@@ -12,7 +12,7 @@
             <a onclick="location='<?php echo $cancel; ?>';" class="button"><span><?php echo $button_cancel; ?></span></a>
         </div>
     </div>
-    <div class="content">
+    <div class="content" style="min-height:730px;">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
             <table class="form">
                 <tr>
@@ -31,6 +31,18 @@
                         <?php if ($error_encryption) { ?>
                         <span class="error"><?php echo $error_encryption; ?></span>
                         <?php } ?></td>
+                </tr>
+                <tr>
+                    <td><?php echo $entry_status; ?></td>
+                    <td><select name="moip_status">
+                            <?php if ($moip_status) { ?>
+                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                            <option value="0"><?php echo $text_disabled; ?></option>
+                            <?php } else { ?>
+                            <option value="1"><?php echo $text_enabled; ?></option>
+                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                            <?php } ?>
+                    </select></td>
                 </tr>
                 <tr>
                     <td><?php echo $entry_test; ?></td>
@@ -126,10 +138,6 @@
                         <div class="help"><?php echo $help_completo; ?></div></td>
                 </tr>
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
                     <td><?php echo $entry_order_status; ?></td>
                     <td><select name="moip_order_status_id">
                             <?php foreach ($order_statuses as $order_status) { ?>
@@ -154,18 +162,6 @@
                             <?php } else { ?>
                             <option value="<?php echo $geo_zone['geo_zone_id']; ?>"><?php echo $geo_zone['name']; ?></option>
                             <?php } ?>
-                            <?php } ?>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td><?php echo $entry_status; ?></td>
-                    <td><select name="moip_status">
-                            <?php if ($moip_status) { ?>
-                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                            <option value="0"><?php echo $text_disabled; ?></option>
-                            <?php } else { ?>
-                            <option value="1"><?php echo $text_enabled; ?></option>
-                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
                             <?php } ?>
                     </select></td>
                 </tr>
