@@ -5,7 +5,7 @@ class ControllerPaymentMoip extends Controller {
     public function index() {
         $this->load->language('payment/moip');
 
-        $this->document->title = $this->language->get('heading_title');
+        $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('setting/setting');
 
