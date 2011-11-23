@@ -12,9 +12,21 @@
             <a onclick="location='<?php echo $cancel; ?>';" class="button"><span><?php echo $button_cancel; ?></span></a>
         </div>
     </div>
-    <div class="content">
+    <div class="content" style="height: 800px;">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form">
             <table class="form">
+                <tr>
+                    <td><?php echo $entry_status; ?></td>
+                    <td><select name="moip_status">
+                            <?php if ($moip_status) { ?>
+                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
+                            <option value="0"><?php echo $text_disabled; ?></option>
+                            <?php } else { ?>
+                            <option value="1"><?php echo $text_enabled; ?></option>
+                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
+                            <?php } ?>
+                    </select></td>
+                </tr>
                 <tr>
                     <td width="18%"><span class="required">*</span> <?php echo $entry_email; ?></td>
                     <td width="82%"><input type="text" name="moip_email" value="<?php echo $moip_email; ?>" />
@@ -154,18 +166,6 @@
                             <?php } else { ?>
                             <option value="<?php echo $geo_zone['geo_zone_id']; ?>"><?php echo $geo_zone['name']; ?></option>
                             <?php } ?>
-                            <?php } ?>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td><?php echo $entry_status; ?></td>
-                    <td><select name="moip_status">
-                            <?php if ($moip_status) { ?>
-                            <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
-                            <option value="0"><?php echo $text_disabled; ?></option>
-                            <?php } else { ?>
-                            <option value="1"><?php echo $text_enabled; ?></option>
-                            <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
                             <?php } ?>
                     </select></td>
                 </tr>
