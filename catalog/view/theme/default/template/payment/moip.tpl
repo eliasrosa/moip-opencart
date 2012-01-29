@@ -63,15 +63,15 @@ if(isset($cupondedesconto)){
 /* Erro no calculo do frete */
 if(!isset($errofrete)){
     $valortotalpdedido=$valortotalpdedido+$valorfe;
-    ?>	
+    ?>   
         <input type="hidden" name="valor" value="<?PHP echo $valortotalpdedido; ?>" />
-        <?php	
+        <?php   
 } else {
     ?>
-        <input type="hidden" name="valor" value="<?PHP echo $valortotalpdedido; ?>" />	
-        <input type="hidden" name="peso_compra" value="<?PHP echo $pesodetodososprodutos; ?>" />	
+        <input type="hidden" name="valor" value="<?PHP echo $valortotalpdedido; ?>" />   
+        <input type="hidden" name="peso_compra" value="<?PHP echo $pesodetodososprodutos; ?>" />   
         <input type="hidden" name="frete" value="1" />
-        <?php	
+        <?php   
 }
 ?>
 <input type="hidden" name="pagador_nome" value="<?PHP echo $first_name.' '.$last_name; ?>" />
@@ -93,16 +93,30 @@ if(!isset($errofrete)){
 <div style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-bottom: 10px;">
 <br />
 <center><img src="http://www.moip.com.br/imgs/banner_parc_6_1_3.gif" border="0" alt="moip" /><br /><br /><img src="http://www.moip.com.br/imgs/flags.JPG" border="0" /><br /><br />
-Ap&oacute;s clicar no bot&atilde;o <b>Pagar</b> que est&aacute; abaixo, voc&ecirc; ser&aacute; redirecionado para o MoIP para efetuar o pagamento.
+Após clicar no botão <b>Pagar</b> que está abaixo, você será redirecionado para o MoIP para efetuar o pagamento.
 </center>  
 <br />
 <br />
 </div>
+
+
 <div class="buttons">
-<table>
-<tr>
-<td align="left"><a onclick="location='<?php echo $back; ?>'" class="button"><span><?php echo $button_back; ?></span></a></td>
-<td align="right"><a id="checkout" onclick="$('#payment').submit();"><img src="https://www.moip.com.br/imgs/buttons/bt_pagar_c01_e04.png" border="0" /></a></td>
-</tr>
-</table>
+ <!-- <a id="button-confirm" class="button"><img src="image/formas_pg/bt_pagar_c01_e04.png" border="0" /></a> -->
+ <a id="button-confirm" ><img src="https://www.moip.com.br/imgs/buttons/bt_pagar_c01_e04.png" border="0" /></a> 
 </div>
+<script type="text/javascript"><!--
+$('#button-confirm').bind('click', function() {
+   $.ajax({
+      type: 'GET',
+      url: 'index.php?route=payment/moip/confirm',
+      beforeSend: function() {
+         $('#button-confirm').attr('disabled', true);
+         
+         $('#payment').before('<div class="attention"><img src="catalog/view/theme/default/image/loading.gif" alt="" /> Finalizando Pedido.</div>');
+      },
+      success: function() {
+         $('#payment').submit();
+      }
+   });
+});
+//--></script>
