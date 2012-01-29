@@ -1,3 +1,35 @@
+<?php
+/* Inicio do tratamento */
+if(!isset($fretegratis)){ 
+    if(isset($this->session->data['shipping_method'])){
+        $valorfe = preg_replace("/[^0-9]/", "", $this->session->data['shipping_method']['text']);
+        if($this->session->data['shipping_method']['code']!='free.free'){
+            if($valorfe<1){
+                $errofrete=true;
+            }
+        }
+    } else {
+        $valorfe=0;
+    }
+} else if($fretegratis==true){
+    $valorfe=0;
+}
+$zip= preg_replace("/[^0-9]/", "",$zip);
+if(!isset($numero)){
+    $numero="0";
+}
+if(!isset($bairro)){
+    $bairro="";
+}
+if(!isset($ddd)){
+    $ddd="00";
+}
+?>
+<form action="<?php echo $action; ?>" method="post" id="payment" accept-charset="ISO-8859-1">
+<?php
+/* Dados dos produtos */
+$descicaaao="";
+$valortotalpdedido=0;
 $pesodetodososprodutos=0;
 
 foreach ($products as $product) {
